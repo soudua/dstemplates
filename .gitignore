@@ -1,0 +1,26 @@
+# dependencies
+node_modules
+
+# build
+dist
+dist-ssr
+*.local
+
+# env
+.env
+.env.*.local
+
+# server data
+server/data/*.json
+
+# downloads (binaries — host elsewhere)
+downloads/*.zip
+
+# editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+
+# logs
+*.log
+npm-debug.log*
