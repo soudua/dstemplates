@@ -19,7 +19,7 @@ export const AboutPage: React.FC = () => {
         >
           <div>
             <p className="font-mono text-xs tracking-[0.3em] uppercase mb-4 t-gold theme-transition">
-              About mmine
+              About dstemplate
             </p>
             <h1 className="font-display text-5xl font-light leading-tight t-text theme-transition">
               Designed to be owned,
@@ -29,7 +29,7 @@ export const AboutPage: React.FC = () => {
           </div>
 
           <p className="leading-relaxed t-muted theme-transition">
-            mmine started from a frustration familiar to anyone who has ever tried to build a beautiful
+            dstemplate started from a frustration familiar to anyone who has ever tried to build a beautiful
             website using a template marketplace: the good ones are locked behind subscriptions, the
             affordable ones look identical to ten thousand other sites, and the ones that truly feel
             premium are priced as if you're licensing a product forever — because you are.
@@ -52,8 +52,8 @@ export const AboutPage: React.FC = () => {
 
           <div className="grid grid-cols-2 gap-6">
             {[
-              { label: 'Founded', value: '2024' },
-              { label: 'Templates', value: '6+' },
+              { label: 'Founded', value: '2026' },
+              { label: 'Templates', value: '4' },
               { label: 'Purchase model', value: 'One-time' },
               { label: 'Licence', value: 'Personal & commercial' },
             ].map(({ label, value }) => (
@@ -72,8 +72,8 @@ export const AboutPage: React.FC = () => {
             <p className="font-mono text-xs tracking-widest uppercase t-muted theme-transition">Questions?</p>
             <p className="text-sm t-muted theme-transition">
               Reach us at{' '}
-              <a href="mailto:hello@mmine.co" className="t-gold hover:t-gold-light transition-colors">
-                hello@mmine.co
+              <a href="soudua@hotmail.com" className="t-gold hover:t-gold-light transition-colors">
+                soudua@hotmail.com
               </a>
             </p>
           </div>

@@ -3,10 +3,8 @@
 // price is in cents (Stripe requires integer minor units).
 
 export const templates = {
-  'velvet-vows':   { name: 'Velvet Vows',   price: 8900, file: 'velvet-vows.zip' },
-  'golden-arch':   { name: 'Golden Arch',   price: 7900, file: 'golden-arch.zip' },
-  'bloom-union':   { name: 'Bloom Union',   price: 8900, file: 'bloom-union.zip' },
-  'mise-en-place': { name: 'Mise en Place', price: 9900, file: 'mise-en-place.zip' },
-  'timeless-knot': { name: 'Timeless Knot', price: 8900, file: 'timeless-knot.zip' },
-  'ember-table':   { name: 'Ember Table',   price: 7900, file: 'ember-table.zip' },
+  'ivory-promise':       { name: 'Ivory Promise',       price: 2900, file: 'ivory-promise.zip' },
+  'the-green-envelope':  { name: 'The Green Envelope',  price: 2900, file: 'the-green-envelope.zip' },
+  'good-food-resturant': { name: 'Good Food Resturant', price: 3900, file: 'good-food-resturant.zip' },
+  'professional-cv': { name: 'Professional Cv', price: 2900, file: 'professional-cv.zip' },
 };

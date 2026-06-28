@@ -77,14 +77,7 @@ app.post('/api/create-checkout-session', express.json(), async (req, res) => {
 // ── Stripe Webhook (payment confirmation) ─────────────────────────────
 // Must receive the RAW body for signature verification — registered
 // with express.raw() instead of express.json().
-app.post(
-  '/api/webhook',
-  express.raw({ type: 'application/json' }),
-  (req, res) => {
-    const sig = req.headers['stripe-signature'];
-    let event;
-
-    try {
+app.post('/api/webhook', express.raw({ type: 'application/json' }), async (req, res) => {
       event = stripe.webhooks.constructEvent(
         req.body,
         sig,
@@ -101,7 +94,7 @@ app.post(
 
       if (templateId && templates[templateId]) {
         const token = crypto.randomBytes(32).toString('hex');
-        tokenStore.set(token, {
+        await tokenStore.set(token, {
           templateId,
           sessionId: session.id,
           createdAt: Date.now(),
@@ -127,7 +120,7 @@ app.get('/api/verify-session', express.json(), async (req, res) => {
   if (!session_id) return res.status(400).json({ error: 'session_id required' });
 
   // Already processed by webhook?
-  const existing = tokenStore.findBySessionId(session_id);
+  const existing = await tokenStore.findBySessionId(session_id);
   if (existing) {
     return res.json({ status: 'complete', token: existing.token, templateId: existing.record.templateId });
   }
@@ -138,7 +131,7 @@ app.get('/api/verify-session', express.json(), async (req, res) => {
     if (session.payment_status === 'paid') {
       const templateId = session.metadata?.templateId;
       const token = crypto.randomBytes(32).toString('hex');
-      tokenStore.set(token, {
+      await tokenStore.set(token, {
         templateId,
         sessionId: session.id,
         createdAt: Date.now(),
@@ -155,14 +148,14 @@ app.get('/api/verify-session', express.json(), async (req, res) => {
 });
 
 // ── Secure Download Endpoint ────────────────────────────────────────────
-app.get('/api/download', (req, res) => {
+app.get('/api/download', async (req, res) => {
   const { token } = req.query;
 
   if (!token || typeof token !== 'string') {
     return res.status(400).json({ error: 'Token required' });
   }
 
-  const record = tokenStore.get(token);
+  const record = await tokenStore.get(token);
 
   if (!record) {
     return res.status(404).json({ error: 'Invalid or expired token' });
@@ -186,7 +179,7 @@ app.get('/api/download', (req, res) => {
     });
   }
 
-  tokenStore.incrementDownloads(token);
+  await tokenStore.incrementDownloads(token);
   res.download(filePath, template.file);
 });
 

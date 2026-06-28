@@ -25,7 +25,7 @@ export const HomePage: React.FC = () => {
     [activeFilter]
   );
 
-  const filters: Filter[] = ['all', 'weddings', 'restaurant'];
+  const filters: Filter[] = ['all', 'weddings', 'restaurant', 'cv'];
 
   return (
     <PageLayout>
@@ -64,8 +64,8 @@ export const HomePage: React.FC = () => {
         >
           {[
             { value: `${templates.length}`, label: 'Templates' },
-            { value: '2', label: 'Categories' },
-            { value: '∞', label: 'Modifications' },
+            { value: '3', label: 'Categories' },
+            
           ].map(({ value, label }) => (
             <div key={label} className="text-center">
               <div className="font-display text-3xl font-light t-gold theme-transition">{value}</div>

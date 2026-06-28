@@ -34,8 +34,8 @@ export const Navbar: React.FC = () => {
           {/* Logo */}
           <Link to="/" className="group flex items-center gap-2">
             <span className="font-display text-2xl font-medium tracking-tight theme-transition">
-              <span className="t-text theme-transition">mm</span>
-              <span className="t-gold theme-transition">ine</span>
+              <span className="t-text theme-transition">ds</span>
+              <span className="t-gold theme-transition">template</span>
             </span>
           </Link>
 

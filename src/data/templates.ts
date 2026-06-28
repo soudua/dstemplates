@@ -5,7 +5,7 @@ import type { Template } from '../types';
 
 export const templates: Template[] = [
   {
-    id: 'Ivory Promise',
+    id: 'ivory-promise',
     name: 'Ivory Promise',
     category: 'weddings',
     description: 'A beautifully designed, fashion-inspired wedding website template that blends elegance, style, and timeless romance for a stunning guest experience.',
@@ -20,18 +20,15 @@ export const templates: Template[] = [
     ],
     price: 29,
     features: [
-      'RSVP form with guest management',
-      'Password-protected guest portal',
-      'Interactive venue map',
       'Photo gallery with lightbox',
-      'Registry link integration',
       'Countdown timer',
       'Mobile-first responsive design',
+      'clean animation'
     ],
     techStack: ['React', 'Tailwind CSS', 'Framer Motion', 'EmailJS'],
   },
   {
-    id: 'The Green Envelope',
+    id: 'the-green-envelope',
     name: 'The Green Envelope',
     category: 'weddings',
     description: 'A chic, fashion-forward wedding website template crafted with elegant details and a beautiful, modern aesthetic to perfectly showcase your special day.',
@@ -46,18 +43,15 @@ export const templates: Template[] = [
     ],
     price: 29,
     features: [
-      'Interactive digital menu with filters',
-      'OpenTable / Resy reservation widget',
-      'Chef spotlight section',
-      'Press & awards display',
-      'Location & hours card',
-      'Instagram feed integration',
-      'Dark/light theme toggle',
+      'Photo gallery with lightbox',
+      'Countdown timer',
+      'Mobile-first responsive design',
+      'clean animation'
     ],
     techStack: ['React', 'Tailwind CSS', 'Framer Motion', 'Google Maps API'],
   },
   {
-    id: 'Good Food Resturant',
+    id: 'good-food-resturant',
     name: 'Good Food Resturant',
     category: 'restaurant',
     description: 'A stylish, beautifully designed restaurant website template that captures a modern dining experience with elegant visuals and a tasteful, food-focused aesthetic.',
@@ -70,17 +64,38 @@ export const templates: Template[] = [
       '/12.png',
       '/14.png',
     ],
-    price: 29,
+    price: 39,
     features: [
-      'Multi-day event schedule',
-      'Accommodation guide & links',
-      'Gift registry integration',
-      'Custom RSVP with meal preferences',
-      'Guest book / message wall',
-      'Photo sharing portal',
-      'Printable PDF schedule export',
+      'Easy build in photos menu',
+      'Clean animation',
+      'Categories',
+
     ],
     techStack: ['React', 'Tailwind CSS', 'Framer Motion', 'Airtable'],
+  },
+  {
+    id: 'professional-cv',
+    name: 'Professional Cv',
+    category: 'cv',
+    description: 'A inpressive and organise way to show your skills, strenghts and apititute for the applying job.',
+    longDescription:
+      'A modern, visually striking CV template designed to showcase skills, experience, achievements with maximum impact with a build in clean animation, one beeing the carousel.',
+    previewVideo: '/v14.mp4',
+    images: [
+      '/17.png',
+      '/15.png',
+      '/16.png',
+      '/18.png',
+    ],
+    price: 29,
+    features: [
+      'Build in to show strenghts and abilitys',
+      'Photo display circle',
+      'Contacts',
+      'Carrossel animation',
+      'Clean animation',
+    ],
+    techStack: ['Javascript', 'HTML', 'CSS'],
   },
   
 ];
@@ -89,4 +104,5 @@ export const categoryLabels: Record<string, string> = {
   all: 'All Templates',
   weddings: 'Weddings',
   restaurant: 'Restaurant',
+  cv: 'Cv',
 };

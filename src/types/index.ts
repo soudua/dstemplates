@@ -1,4 +1,4 @@
-export type Category = 'weddings' | 'restaurant';
+export type Category = 'weddings' | 'restaurant' | 'cv';
 
 export interface Template {
   id: string;

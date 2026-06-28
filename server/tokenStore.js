@@ -1,54 +1,35 @@
-// ── Persistent token store ─────────────────────────────────────────
-// File-based JSON store. Good enough for a single-instance deploy or
-// local development. For multi-instance production deployments,
-// swap this module for Redis, Postgres, or any KV store — the
-// function signatures (get/set/all/save) are the only contract
-// the rest of the app depends on.
+import { Redis } from '@upstash/redis';
 
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const DB_PATH = path.join(__dirname, 'data', 'tokens.json');
-
-function load() {
-  try {
-    const raw = fs.readFileSync(DB_PATH, 'utf-8');
-    return JSON.parse(raw);
-  } catch {
-    return {};
-  }
-}
-
-function persist(data) {
-  fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
-  fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2));
-}
-
-let store = load();
+const redis = new Redis({
+  url: process.env.UPSTASH_REDIS_REST_URL,
+  token: process.env.UPSTASH_REDIS_REST_TOKEN,
+});
 
 export const tokenStore = {
-  get(token) {
-    return store[token] ?? null;
+  async get(token) {
+    return await redis.get(token);
   },
 
-  findBySessionId(sessionId) {
-    for (const [token, record] of Object.entries(store)) {
-      if (record.sessionId === sessionId) return { token, record };
+  async findBySessionId(sessionId) {
+    const keys = await redis.keys('token:*');
+    for (const key of keys) {
+      const record = await redis.get(key);
+      if (record?.sessionId === sessionId) {
+        return { token: key.replace('token:', ''), record };
+      }
     }
     return null;
   },
 
-  set(token, record) {
-    store[token] = record;
-    persist(store);
+  async set(token, record) {
+    await redis.set(`token:${token}`, record);
   },
 
-  incrementDownloads(token) {
-    if (store[token]) {
-      store[token].downloads = (store[token].downloads || 0) + 1;
-      persist(store);
+  async incrementDownloads(token) {
+    const record = await redis.get(`token:${token}`);
+    if (record) {
+      record.downloads = (record.downloads || 0) + 1;
+      await redis.set(`token:${token}`, record);
     }
   },
 };

@@ -63,7 +63,7 @@ export const TemplateDetailPage: React.FC = () => {
           className="flex items-center gap-1.5 text-muted hover:text-white text-sm transition-colors mb-8"
         >
           <ChevronLeft size={16} />
-          All Templates
+          Back
         </button>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-12">
@@ -146,7 +146,7 @@ export const TemplateDetailPage: React.FC = () => {
             {/* Header */}
             <div>
               <CategoryBadge category={template.category} className="mb-3" />
-              <h1 className="font-display text-4xl font-light text-white leading-tight">
+              <h1 className="font-display text-4xl font-light text-gold leading-tight">
                 {template.name}
               </h1>
               <p className="mt-3 text-muted leading-relaxed text-sm">{template.description}</p>
@@ -185,7 +185,7 @@ export const TemplateDetailPage: React.FC = () => {
                 What's included
               </p>
               {[
-                { icon: Code2, text: 'Full source code (React + TypeScript)' },
+                { icon: Code2, text: 'Full source code' },
                 { icon: Download, text: 'Instant secure download after purchase' },
                 { icon: ShieldCheck, text: 'Personal & commercial use licence' },
                 { icon: Check, text: 'Unlimited modifications allowed' },
@@ -233,7 +233,7 @@ export const TemplateDetailPage: React.FC = () => {
 
         {/* Long description */}
         <div className="mt-16 max-w-2xl">
-          <h2 className="font-display text-2xl font-light text-white mb-4">About this template</h2>
+          <h2 className="font-display text-2xl font-light text-gold mb-4">About this template</h2>
           <p className="text-muted leading-relaxed">{template.longDescription}</p>
         </div>
       </div>

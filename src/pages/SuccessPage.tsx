@@ -146,8 +146,8 @@ export const SuccessPage: React.FC = () => {
               </p>
               <p className="text-xs text-muted">
                 If this persists, check your email for a receipt and contact{' '}
-                <a href="mailto:hello@mmine.co" className="text-gold hover:text-gold-light">
-                  hello@mmine.co
+                <a href="mailto:soudua@hotmail.com" className="text-gold hover:text-gold-light">
+                  soudua@hotmail.com
                 </a>{' '}
                 with your payment confirmation.
               </p>
