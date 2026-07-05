@@ -51,7 +51,7 @@ app.post('/api/create-checkout-session', express.json(), async (req, res) => {
       line_items: [
         {
           price_data: {
-            currency: 'usd',
+            currency: 'eur',
             product_data: {
               name: template.name,
               description: 'Full source code (React + TypeScript). One-time purchase.',
