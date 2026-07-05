@@ -78,6 +78,10 @@ app.post('/api/create-checkout-session', express.json(), async (req, res) => {
 // Must receive the RAW body for signature verification — registered
 // with express.raw() instead of express.json().
 app.post('/api/webhook', express.raw({ type: 'application/json' }), async (req, res) => {
+    const sig = req.headers['stripe-signature'];
+    let event;
+
+    try {
       event = stripe.webhooks.constructEvent(
         req.body,
         sig,
